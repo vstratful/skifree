@@ -617,11 +617,12 @@ export default function BuildLog() {
             </li>
           </ul>
           <p>
-            One more thing is still open and worth stating plainly:{" "}
-            <strong>nobody has verified the sound with their ears.</strong> The
-            fix is proven against a mock, which shows the scheduling is right
-            and the unlock path works — but a mock cannot prove a speaker makes
-            a noise.
+            The audio fix shipped with a caveat attached, because it was proven
+            against a mock — which establishes that the scheduling is right and
+            the unlock path works, but cannot establish that a speaker makes a
+            noise. <strong>Vince has since confirmed it does.</strong> Worth
+            recording, because that was the one claim in the whole project no
+            amount of test harness was ever going to settle.
           </p>
         </section>
 

@@ -287,12 +287,19 @@ export function SkiFreeGame() {
           hint: "F1",
           onSelect: () => setHelpOpen(true),
         },
+        { kind: "separator" },
+        {
+          kind: "item",
+          label: "How This Was Built",
+          // A new tab, so an in-progress run is not thrown away to read it.
+          onSelect: () => window.open("/buildlog", "_blank", "noopener"),
+        },
       ],
     },
   ];
 
   return (
-    <div className="flex h-dvh items-center justify-center bg-[#008080] p-1 sm:p-4">
+    <div className="flex h-dvh items-center justify-center overflow-hidden bg-[#008080] p-1 sm:p-4">
       <div
         className={`flex h-full max-h-[940px] w-full max-w-6xl flex-col bg-[#c0c0c0] font-sans ${RAISED}`}
       >

@@ -1,0 +1,527 @@
+/*
+ * Styles for /buildlog. Every rule is scoped under `.buildlog` so importing this
+ * file cannot leak anything into the game page.
+ *
+ * The palette is the game's own — Windows 3.1 chrome grey, title-bar navy,
+ * desktop teal, the player's jacket red for things that broke and the conifer
+ * green for things that held. The page and the game are one visual system.
+ */
+
+.buildlog {
+  --snow: #f6f9fc;
+  --panel: #ffffff;
+  --ink: #0f141b;
+  --ink-soft: #4a5764;
+  --ink-faint: #74818e;
+  --rule: #d3dde6;
+  --chrome: #c0c0c0;
+  --chrome-lit: #ffffff;
+  --chrome-dim: #7d8388;
+  --navy: #000080;
+  --navy-ink: #ffffff;
+  --teal: #00706f;
+  --ski-red: #b81f1f;
+  --pine: #14803a;
+
+  --display:
+    "Segoe UI Variable Display", "Segoe UI", system-ui, -apple-system,
+    "Helvetica Neue", sans-serif;
+  --body:
+    Georgia, "Iowan Old Style", "Palatino Linotype", "Book Antiqua", serif;
+  --mono: "Cascadia Mono", Consolas, ui-monospace, "SF Mono", Menlo, monospace;
+
+  background: var(--snow);
+  color: var(--ink);
+  font-family: var(--body);
+  font-size: 1.0625rem;
+  line-height: 1.68;
+  -webkit-font-smoothing: antialiased;
+  min-height: 100%;
+}
+
+@media (prefers-color-scheme: dark) {
+  .buildlog {
+    --snow: #0d1219;
+    --panel: #141b24;
+    --ink: #e6edf5;
+    --ink-soft: #a2b0bf;
+    --ink-faint: #7d8a97;
+    --rule: #26313d;
+    --chrome: #3d444b;
+    --chrome-lit: #6b747c;
+    --chrome-dim: #1b2027;
+    --navy: #2b3ea8;
+    --teal: #4ecdc9;
+    --ski-red: #ff7062;
+    --pine: #56c162;
+  }
+}
+
+/* ---- The teal desktop the page sits on -------------------------------- */
+
+.buildlog .desk {
+  height: 6px;
+  background: var(--teal);
+}
+
+.buildlog .wrap {
+  max-width: 43rem;
+  margin: 0 auto;
+  padding: 0 1.25rem 5rem;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ---- Windows 3.1 chrome ----------------------------------------------- */
+
+.buildlog .titlebar {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: var(--navy);
+  color: var(--navy-ink);
+  padding: 0.3rem 0.4rem;
+  font-family: var(--display);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+}
+
+.buildlog .titlebar .box {
+  flex: none;
+  width: 1.05rem;
+  height: 0.85rem;
+  background: var(--chrome);
+  border: 1px solid;
+  border-color: var(--chrome-lit) var(--chrome-dim) var(--chrome-dim)
+    var(--chrome-lit);
+  display: grid;
+  place-items: center;
+}
+
+.buildlog .titlebar .box i {
+  display: block;
+  width: 0.6rem;
+  height: 2px;
+  background: #000;
+}
+
+.buildlog .sunken {
+  background: var(--panel);
+  border: 2px solid;
+  border-color: var(--chrome-dim) var(--chrome-lit) var(--chrome-lit)
+    var(--chrome-dim);
+}
+
+/* ---- Type ------------------------------------------------------------- */
+
+.buildlog h1,
+.buildlog h2,
+.buildlog h3 {
+  font-family: var(--display);
+  letter-spacing: -0.02em;
+  text-wrap: balance;
+  line-height: 1.14;
+  margin: 0;
+}
+
+.buildlog h1 {
+  font-size: clamp(2.1rem, 6vw, 3.1rem);
+  font-weight: 800;
+}
+
+.buildlog h2 {
+  font-size: 1.4rem;
+  font-weight: 700;
+}
+
+.buildlog h3 {
+  font-size: 1.05rem;
+  font-weight: 700;
+  margin-bottom: 0.35rem;
+}
+
+.buildlog .eyebrow {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--teal);
+}
+
+.buildlog .standfirst {
+  font-size: 1.2rem;
+  line-height: 1.55;
+  color: var(--ink-soft);
+}
+
+.buildlog p,
+.buildlog ul,
+.buildlog ol {
+  margin: 0;
+}
+
+.buildlog a {
+  color: var(--teal);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
+}
+
+.buildlog a:focus-visible {
+  outline: 2px solid var(--teal);
+  outline-offset: 2px;
+}
+
+.buildlog code {
+  font-family: var(--mono);
+  font-size: 0.875em;
+  background: color-mix(in srgb, var(--teal) 12%, transparent);
+  padding: 0.1em 0.32em;
+  border-radius: 2px;
+}
+
+.buildlog strong {
+  font-weight: 700;
+  color: var(--ink);
+}
+
+/* ---- Structure -------------------------------------------------------- */
+
+.buildlog .hero {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+  padding: 3.2rem 0 2.4rem;
+}
+
+.buildlog section {
+  display: flex;
+  flex-direction: column;
+  gap: 1.05rem;
+  padding: 2.6rem 0 0;
+}
+
+.buildlog ul.notes {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  padding: 0;
+}
+
+.buildlog ul.notes > li {
+  display: grid;
+  grid-template-columns: 1.15rem 1fr;
+  gap: 0.65rem;
+  align-items: start;
+}
+
+.buildlog ul.notes > li::before {
+  content: "";
+  width: 0.62rem;
+  height: 0.62rem;
+  margin-top: 0.52rem;
+  background: var(--teal);
+}
+
+.buildlog ul.notes.broke > li::before {
+  background: var(--ski-red);
+}
+
+.buildlog ul.notes.held > li::before {
+  background: var(--pine);
+}
+
+/* ---- Panels and data -------------------------------------------------- */
+
+.buildlog .panel {
+  padding: 1rem 1.05rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+
+.buildlog .caption {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  line-height: 1.5;
+  color: var(--ink-faint);
+}
+
+.buildlog .scroller {
+  overflow-x: auto;
+}
+
+.buildlog table {
+  border-collapse: collapse;
+  width: 100%;
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.buildlog th,
+.buildlog td {
+  text-align: left;
+  padding: 0.42rem 0.7rem 0.42rem 0;
+  border-bottom: 1px solid var(--rule);
+  vertical-align: top;
+}
+
+.buildlog th {
+  font-weight: 700;
+  color: var(--ink-soft);
+  text-transform: uppercase;
+  font-size: 0.68rem;
+  letter-spacing: 0.09em;
+  white-space: nowrap;
+}
+
+.buildlog td.num {
+  text-align: right;
+  padding-right: 0;
+  white-space: nowrap;
+}
+
+.buildlog tr:last-child td {
+  border-bottom: 0;
+}
+
+.buildlog pre {
+  margin: 0;
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  line-height: 1.4;
+  overflow-x: auto;
+  color: var(--ink-soft);
+}
+
+/* ---- Verbatim human input --------------------------------------------- */
+
+.buildlog .prompt {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  border-left: 3px solid var(--teal);
+  padding: 0.15rem 0 0.15rem 0.95rem;
+}
+
+.buildlog .prompt .who {
+  font-family: var(--mono);
+  font-size: 0.66rem;
+  text-transform: uppercase;
+  letter-spacing: 0.13em;
+  color: var(--ink-faint);
+}
+
+.buildlog .prompt q {
+  font-family: var(--mono);
+  font-size: 0.855rem;
+  line-height: 1.62;
+  color: var(--ink);
+  quotes: none;
+}
+
+.buildlog .picks {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  font-family: var(--mono);
+  font-size: 0.78rem;
+}
+
+.buildlog .picks > div {
+  display: flex;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+}
+
+.buildlog .picks span:first-child {
+  color: var(--ink-faint);
+  min-width: 5.4rem;
+}
+
+.buildlog .shout {
+  background: color-mix(in srgb, var(--teal) 10%, transparent);
+  border-left: 3px solid var(--teal);
+  padding: 1rem 1.1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+/* ---- Speed ladder ----------------------------------------------------- */
+
+.buildlog .ladder {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 0.5rem 0.75rem;
+  align-items: center;
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.buildlog .ladder .lbl,
+.buildlog .ladder .val {
+  white-space: nowrap;
+}
+
+.buildlog .ladder .val {
+  color: var(--ink-soft);
+}
+
+.buildlog .ladder .track {
+  height: 0.85rem;
+  background: color-mix(in srgb, var(--ink) 8%, transparent);
+}
+
+.buildlog .ladder .fill {
+  display: block;
+  height: 100%;
+  background: var(--teal);
+}
+
+.buildlog .ladder .fill.threat {
+  background: var(--ski-red);
+}
+
+.buildlog .ladder .fill.win {
+  background: var(--pine);
+}
+
+/* ---- Sprites ---------------------------------------------------------- */
+
+/*
+ * Sprites are drawn for pure white snow and carry their own ground in both
+ * themes; recolouring it would be recolouring the artwork.
+ */
+.buildlog .gallery {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.4rem;
+  align-items: flex-end;
+  justify-content: center;
+  background: #ffffff;
+  padding: 1.4rem 1.1rem 1.2rem;
+}
+
+.buildlog .tile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.55rem;
+}
+
+.buildlog .tile .name {
+  font-family: var(--mono);
+  font-size: 0.66rem;
+  letter-spacing: 0.05em;
+  color: #5d6b78;
+}
+
+.buildlog .pixels {
+  display: grid;
+  line-height: 0;
+}
+
+.buildlog .pixels > i {
+  display: block;
+}
+
+.buildlog .compare {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr));
+  gap: 1.1rem;
+}
+
+.buildlog .compare > figure {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  align-items: center;
+  background: #ffffff;
+  padding: 1rem 0.8rem;
+  border: 2px solid;
+  border-color: var(--chrome-dim) var(--chrome-lit) var(--chrome-lit)
+    var(--chrome-dim);
+}
+
+.buildlog .compare figcaption {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  text-align: center;
+  color: #5d6b78;
+}
+
+.buildlog .compare figcaption b {
+  display: block;
+  font-size: 0.78rem;
+  margin-bottom: 0.15rem;
+}
+
+.buildlog .verdict-bad {
+  color: #a8231c;
+}
+
+.buildlog .verdict-good {
+  color: #0d6b30;
+}
+
+/* ---- Stat strip ------------------------------------------------------- */
+
+.buildlog .stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(7.5rem, 1fr));
+  gap: 1px;
+  background: var(--rule);
+}
+
+.buildlog .stats > div {
+  background: var(--panel);
+  padding: 0.85rem 0.9rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.buildlog .stats .n {
+  font-family: var(--display);
+  font-size: 1.45rem;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  font-variant-numeric: tabular-nums;
+}
+
+.buildlog .stats .k {
+  font-family: var(--mono);
+  font-size: 0.66rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--ink-faint);
+}
+
+.buildlog .playbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.3rem 0.7rem;
+  font-family: var(--mono);
+  font-size: 0.82rem;
+}
+
+.buildlog .playbar .k {
+  color: var(--ink-faint);
+  text-transform: uppercase;
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
+}
+
+.buildlog footer {
+  padding: 3.2rem 0 0;
+  color: var(--ink-faint);
+  font-family: var(--mono);
+  font-size: 0.74rem;
+  line-height: 1.7;
+}

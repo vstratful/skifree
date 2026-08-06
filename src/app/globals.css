@@ -8,8 +8,11 @@
 html,
 body {
   height: 100%;
-  /* The game paints its own Windows 3.1 desktop, and nothing here scrolls. */
-  overflow: hidden;
+  /*
+   * Scroll locking belongs to the game page, not to the document: /buildlog is a
+   * long read and needs to scroll normally. The game pins itself to the viewport
+   * with `h-dvh overflow-hidden` on its own root instead.
+   */
   overscroll-behavior: none;
   background: #008080;
   color: #000000;

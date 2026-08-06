@@ -11,6 +11,11 @@ pnpm install
 pnpm dev      # http://localhost:3000
 ```
 
+There is a build log at [`/buildlog`](http://localhost:3000/buildlog) — how the
+thing came to exist, what the disassembly of the original turned up, and the bugs
+that only showed up because it was tested without a browser. Also reachable from
+the game's Help menu.
+
 ```bash
 pnpm build    # production build
 pnpm lint     # biome

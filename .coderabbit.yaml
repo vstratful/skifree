@@ -1,0 +1,21 @@
+# yaml-language-server: $schema=https://coderabbit.ai/integrations/schema.v2.json
+
+inheritance: true
+
+reviews:
+  profile: assertive
+  auto_review:
+    enabled: true
+    auto_incremental_review: false
+
+knowledge_base:
+  learnings:
+    scope: local
+  issues:
+    scope: local
+  pull_requests:
+    scope: local
+  jira:
+    usage: disabled
+  linear:
+    usage: disabled
